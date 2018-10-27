@@ -1,0 +1,32 @@
+{
+    "name": "william/laravel-rpc",
+    "description": "Naive rpc tool for laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "william",
+            "email": "1342247033@qq.com"
+        }
+    ],
+    "require": {
+        "illuminate/routing": "^5.1",
+        "guzzlehttp/guzzle": "^6.2.1"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "WilliamWei\\LaravelRPC\\": "src/"
+        }
+    },
+
+    "extra": {
+        "laravel": {
+            "providers": [
+                "WilliamWei\\LaravelRPC\\Providers\\RPCProvider",
+            ],
+            "aliases": {
+            }
+        }
+    }
+}
