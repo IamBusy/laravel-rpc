@@ -11,7 +11,7 @@ namespace App\Services\Message;
 
 use function GuzzleHttp\Psr7\parse_query;
 use Illuminate\Support\Facades\Log;
-use Symfony\Component\Translation\Exception\InvalidArgumentException;
+use WilliamWei\LaravelRPC\Exceptions\InvalidParametersException;
 use WilliamWei\LaravelRPC\Message\HttpTransport;
 
 class ServiceProvider
@@ -33,6 +33,7 @@ class ServiceProvider
      * @param $entryPoints
      * @param array $parameters
      * @return bool|mixed
+     * @throws InvalidParametersException
      */
     public function call($server, $entryPoints, $parameters = []) {
         Log::info('ServiceProvider call remote service', [
@@ -41,7 +42,7 @@ class ServiceProvider
             'parameters'    =>  $parameters
         ]);
         if (! array_key_exists($server, $this->apis)) {
-            throw new InvalidArgumentException(sprintf('无效的服务提供者[%s]', $server));
+            throw new InvalidParametersException(sprintf('无效的服务提供者[%s]', $server));
         }
         $url = $this->apis[$server]['api']['base'];
         $code = $this->apis[$server]['code'];
@@ -50,7 +51,7 @@ class ServiceProvider
         ]);
         $entry = explode('.', $entryPoints);
         if (count($entry) != 2) {
-            throw new InvalidArgumentException('服务点必须为provider.func格式');
+            throw new InvalidParametersException('服务点必须为provider.func格式');
         }
         return $this->transport->transfer($url, [
             'provider' => $entry[0],

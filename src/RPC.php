@@ -13,8 +13,8 @@ use WilliamWei\LaravelRPC\Middlewares\Guard\PasswordGuard;
 class RPC
 {
     public static function routes() {
-        Route::middleware(PasswordGuard::class)
-            ->post('serviceProvider', 'WilliamWei\LaravelRPC\Controllers\ServiceProviderController@handle');
+        Route::middleware(PasswordGuard::class, [])
+            ->post('serviceProvider', '\WilliamWei\LaravelRPC\Controllers\ServiceProviderController@handle');
     }
 
 }
