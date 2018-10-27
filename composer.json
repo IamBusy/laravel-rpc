@@ -23,7 +23,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "WilliamWei\\LaravelRPC\\Providers\\RPCProvider",
+                "WilliamWei\\LaravelRPC\\Providers\\RPCProvider"
             ],
             "aliases": {
             }
