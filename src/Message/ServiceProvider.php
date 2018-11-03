@@ -6,7 +6,7 @@
  * Time: 6:18 PM
  */
 
-namespace App\Services\Message;
+namespace WilliamWei\LaravelRPC\Services\Message;
 
 
 use function GuzzleHttp\Psr7\parse_query;
